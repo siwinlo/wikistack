@@ -21,14 +21,14 @@ app.use(express.static("public"));
 //body parsing middleware
 app.use(express.urlencoded({ extended: false }));
 
-//specific routes for the '/wiki' and '/user' URIs
+//specific routes for the '/wiki' and '/user' URIs, these need to be added before the '/' route in order to be run
 app.use("/user", userRouter);
 app.use("/wiki", wikiRouter);
 
 //homepage route for 'localhost:3000'
 app.get("/", (req, res, next) => {
-  console.log("hello world");
-  res.send(layout());
+  //res.send(layout());
+  res.redirect("/wiki");
 });
 
 // const init=async()=>{
